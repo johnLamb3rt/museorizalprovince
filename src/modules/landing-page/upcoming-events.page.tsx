@@ -1,7 +1,17 @@
-import EventItem from "@/components/event-item"
-import Eyebrow from "@/components/eyebrow"
+import EventItem from "@/components/event-item";
+import Eyebrow from "@/components/eyebrow";
+import { Spinner } from "@/components/spinner";
+import { useMemo } from "react";
+import useEvents from "../admin/events/hooks/useEvents";
 
 const UpcomingEvents = () => {
+
+  const { data: eventsData, isLoading } = useEvents();
+
+  const memoEvents = useMemo(() => {
+    return eventsData?.data?.events || [];
+  }, [eventsData]);
+
   return (
     <div>
       <div className="container mx-auto">
@@ -19,10 +29,31 @@ const UpcomingEvents = () => {
             </div>
           </div>
           <div className="flex lg:flex-row flex-col gap-8">
-            <EventItem
+
+          {isLoading ? (
+              <div className="flex justify-center items-center w-full">
+                <Spinner className="mx-auto" />
+                <span className="sr-only">Loading events...</span>
+              </div>
+            ) : (
+              // Display first 3 events
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              memoEvents.map((event: any) => (
+                <EventItem
+                  key={event.event_id}
+                  icon={event.coverPhoto}  // Assuming event has an icon property
+                  date={""}  // Assuming event has a date property
+                  title={event.title}  // Assuming event has a title property
+                  description={""}  // Assuming event has a description property
+                  navigation={`event=${event.event_id}`}
+                />
+              ))
+            )}
+                  
+            {/* <EventItem
               date="April 03, 2002"
               icon={"/mock/hinge.png"}
-              title="Higantes Festival"
+              title={""}
               description="A vibrant celebration featuring giant papier-mâché figures, symbolizing the town's agrarian past."
             />
             <EventItem
@@ -36,7 +67,7 @@ const UpcomingEvents = () => {
               date="April 03, 2002"
               title="Higantes Festival"
               description="A vibrant celebration featuring giant papier-mâché figures, symbolizing the town's agrarian past."
-            />
+            /> */}
                       {/*   <ServiceItem
               icon={"RenovationIcon"}
               title="Resource Accessability"

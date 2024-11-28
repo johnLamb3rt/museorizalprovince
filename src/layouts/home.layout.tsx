@@ -15,7 +15,7 @@ const HomeLayout = () => {
     <hr className="text-neutral-300" />
 
     <UpcomingEvents />
-
+    <hr className="text-neutral-300" />
     <Highlights />
    </div>
   )

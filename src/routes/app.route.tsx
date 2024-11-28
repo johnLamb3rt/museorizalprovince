@@ -2,6 +2,8 @@ import HomeLayout from "@/layouts/home.layout";
 import DashboardPage from "@/modules/admin/dashboard/dashboard.page";
 import DetailedDashboard from "@/modules/admin/dashboard/detailed.dashboard";
 import OverviewDashboard from "@/modules/admin/dashboard/overview.dashboard";
+import EventContent from "@/modules/admin/events/event-content";
+import EventLists from "@/modules/admin/events/event-lists";
 import EventPage from "@/modules/admin/events/events.page";
 import ExhibitContentForm from "@/modules/admin/exhibits/exhibit-form.content";
 import ExhibitsList from "@/modules/admin/exhibits/exhibits-list";
@@ -208,6 +210,16 @@ export const appRouter = createBrowserRouter([
       {
         path: 'events',
         Component: EventPage,
+        children: [
+          {
+            index: true,
+            Component: EventLists
+          },
+          {
+            path: 'event-lists',
+            Component: EventLists
+          }
+        ]
       }
     ]
   },
@@ -222,7 +234,12 @@ export const appRouter = createBrowserRouter([
   {
     path: '/exhibits_mgm/add_exhibit',
     Component: ExhibitContentForm
-  }
+  },
+  // For Event Form
+  {
+    path: '/event/add_event',
+    Component: EventContent
+  },
 
 
 ])

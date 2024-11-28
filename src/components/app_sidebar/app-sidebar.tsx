@@ -1,11 +1,12 @@
 "use client"
 
 import {
+  ActivityIcon,
   BookOpen,
+  FileIcon,
   FolderEditIcon,
   Frame,
   LayoutDashboard,
-  PieChart,
   Settings2,
   UserIcon
 } from "lucide-react"
@@ -51,25 +52,7 @@ const data = {
         },
       ],
     },
-    // {
-    //   title: "Models",
-    //   url: "#",
-    //   icon: Bot,
-    //   items: [
-    //     {
-    //       title: "Genesis",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Explorer",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Quantum",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
+   
     {
       title: "Content Management",
       url: "#",
@@ -90,6 +73,39 @@ const data = {
       ],
     },
     {
+      title: "Reports",
+      url: "#",
+      icon: FileIcon,
+      items: [
+        {
+          title: "Visitor",
+          url: "#",
+        },
+        {
+          title: "Users",
+          url: "#",
+        },
+        {
+          title: "Events",
+          url: "#",
+        },
+        {
+          title: "Exhibits",
+          url: "#",
+        },
+        {
+          title: "Museums",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Audit Trail",
+      url: "/audit-trail",
+      icon: ActivityIcon,
+    },
+  
+    {
       title: "Settings",
       url: "#",
       icon: Settings2,
@@ -106,11 +122,6 @@ const data = {
       name: "Events",
       url: "events",
       icon: Frame,
-    },
-    {
-      name: "News",
-      url: "#",
-      icon: PieChart,
     },
     {
       name: "Feedback",

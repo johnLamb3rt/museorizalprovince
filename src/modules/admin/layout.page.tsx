@@ -33,13 +33,14 @@ const LayoutPage = ({ children }: { children: ReactNode }) => {
       finalName = "Maximize your landing page capability"
     } else if (name === 'visitors') {
       finalName = "All Visitors"
-    }
+    } else if (name === 'events' || name === 'event-lists') {
+      finalName = "Manage event details, and incoming data"
+   } 
 
 
     return finalName;
   }
 
-  console.log(identifierCrumb())
 
   const secondaryCrumb = (): string => {
     const lastRoute = pathname.split('/');
@@ -60,6 +61,8 @@ const LayoutPage = ({ children }: { children: ReactNode }) => {
       finalName = "Municipality"
     } else if (name === 'page_editor') {
       finalName = "Page Editor"
+    }  else if (name === 'events') {
+      finalName = "Events"
     }  
      
 
